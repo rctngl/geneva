@@ -1,0 +1,5 @@
+@import url("./style/reset.css");
+@import url("./style/variables.css");
+@import url("./style/global.css");
+@import url("./components/avatar/avatar.css");
+@import url("./components/badge/badge.css");
