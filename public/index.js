@@ -1,11 +1,24 @@
-import { registerAvatarComponent } from './components/avatar/avatar.js'
-import { registerBadgeComponent } from './components/badge/badge.js'
-import { registerHeaderComponent } from './components/header/header.js'
+// Components
+import { registerStageManagerComponent } from './components/stage-manager/stage-manager.js'
+
+// Core App Layout
+import { registerApp } from './app/app.js'
 
 const app = () => {
-	registerAvatarComponent()
-	registerBadgeComponent()
-	registerHeaderComponent()
+	
+	// Components
+	registerStageManagerComponent()
+	
+	// Core App Layout
+	registerApp()
+	
+	// Load initial layout template
+	const template = document.querySelector('template#root')
+	
+	if (template) {
+		document.body.appendChild(template.content, true)
+	}
+	
 }
 
 document.addEventListener('DOMContentLoaded', app)
