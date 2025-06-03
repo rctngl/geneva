@@ -4,7 +4,6 @@
 		<title>Rectangle App</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width" />
-		<link rel="stylesheet" href="index.css" />
 	</head>
 	<body>
 		
@@ -13,25 +12,34 @@
 		<template id="root">
 			<x-app>
 				<x-stage-manager>
-					<h1>stage manager</h1>
-					<button id="devices">Devices</button>
-					<button id="dashboard">Dashboard</button>
-					<button id="scope">Scope</button>
-					<main id="stage"></main>
+					<header>
+						<h1>stage manager</h1>
+						<nav></nav>
+					</header>
+					
+					<main>
+						<x-stage active="false" template="stage-devices" title="Devices"></x-stage>
+						<x-stage active="false" template="stage-dashboard" title="Dashboard"></x-stage>
+						<x-stage active="false" template="stage-scope" title="Scope"></x-stage>
+					</main>
 				</x-stage-manager>
 			</x-app>
 		</template>
 		
+		<template id="stage-button">
+			<button class=""></button>
+		</template>
+		
 		<template id="stage-devices">
-			<h1>Devices Stage</h1>
+			<p>devices template</p>
 		</template>
 		
 		<template id="stage-dashboard">
-			<h1>Dashboard Stage</h1>
+			<h1>Dashboard</h1>
 		</template>
 		
 		<template id="stage-scope">
-			<h1>Scope Stage</h1>
+			<i>scope template</i>
 		</template>
 		
 		<script type="module" src="index.js"></script>

@@ -1,54 +1,75 @@
 class StageManagerComponent extends HTMLElement {
 	
-	#stage = 1
+	#stage = 0
 	
 	connectedCallback() {
 		
-		// Set Nav Buttons
-		this.querySelector('#devices').onclick = () => {
-			this.#stage = 0
-			this.update()
-		}
+		const nav = this.querySelector('nav')
+		const buttonTemplate = document.querySelector('template#stage-button').content
 		
-		this.querySelector('#dashboard').onclick = () => {
-			this.#stage = 1
-			this.update()
-		}
+		// Create Nav buttons for each stage
 		
-		this.querySelector('#scope').onclick = () => {
-			this.#stage = 2
-			this.update()
-		}
+		this.querySelectorAll('x-stage').forEach((stage,index) => {
+			
+			const button = buttonTemplate.querySelector('button').cloneNode()
+			const title = stage.getAttribute('title')
+			
+			button.innerText = title
+			
+			button.onclick = () => {
+				this.#stage = index
+				this.update()
+			}
+			
+			nav.appendChild(button)
+		})
 		
 		// Set the stage
 		this.update();
 	}
 	
 	update() {
-		const id = this.getTemplateName();
-		const template = document.querySelector(`template#${id}`)
-		this.querySelector('#stage').innerHTML = template.innerHTML
+		// Set active state for each stage
+		this.querySelectorAll('x-stage').forEach((stage,index) => {
+			stage.setAttribute('active', index === this.#stage)
+		})
+	}
+}
+
+/**
+ * Usage:
+ * <x-stage active="true" template="template-id" title="Stage Title"></x-stage>
+ */
+
+class StageComponent extends HTMLElement {
+	
+	static get observedAttributes() {
+		return ['active']
 	}
 	
-	getTemplateName() {
+	connectedCallback() {
+		const templateId = this.getAttribute('template')
 		
-		switch (this.#stage) {
-			case 0:
-				return 'stage-devices'
-				break;
-			case 1:
-				return 'stage-dashboard'
-				break;
-			case 2:
-				return 'stage-scope'
-				break;
-			
+		if (!templateId) {
+			return
 		}
 		
+		const template = document.querySelector(`template#${templateId}`)
+		this.appendChild(template.content)
+	}
+	
+	attributeChangedCallback() {
+		this.update()
+	}
+	
+	update() {
+		const style = (this.getAttribute('active') === "false") ? "display:none;" : ""
+		this.style = style
 	}
 	
 }
 
 export const registerStageManagerComponent = () => {
+	customElements.define('x-stage', StageComponent)
 	customElements.define('x-stage-manager', StageManagerComponent)
 }
