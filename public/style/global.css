@@ -1,9 +1,0 @@
-body { 
-	font-family: system-ui, sans-serif;
-}
-
-x-header, main { 
-	margin: 1em; 
-	padding: 1em;
-	border: 1px dashed black;
-}
