@@ -2,8 +2,16 @@
     <input id="app-sidebar" type="checkbox" class="drawer-toggle" />
 
     <!-- App Content -->
-    <div class="drawer-content flex bg-base-200 text-base-content">
-        <router-outlet />
+    <div class="drawer-content flex flex-col text-base-content">
+
+        <!-- Mobile Header -->
+        <app-mobile-header />
+        
+        <!-- App Router -->
+        <div class=" p-5 lg:p-10">
+            <router-outlet />
+        </div>
+
     </div>
 
     <!-- Sidebar content here -->
