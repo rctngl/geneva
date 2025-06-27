@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+    name: "geneva";
+    default: true;
+    prefersdark: false;
+    color-scheme: light;
+
+    /* Sidebar */
+    --color-base-100: #FFFFFF;
+
+    /* Main App Content */
+    --color-base-200: #FCFCFC;
+
+    /* Main Border Color */
+    --color-base-300: #E1DFDD;
+
+    /* Main Text Color */
+    --color-base-content: black;
+
+    --depth: 0;
+}
