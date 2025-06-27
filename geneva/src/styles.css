@@ -19,4 +19,6 @@
 
     /* Main Text Color */
     --color-base-content: black;
+
+    --depth: 0;
 }
