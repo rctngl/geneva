@@ -9,5 +9,15 @@ import { MobileHeaderComponent } from './components/mobile-header/mobile-header.
   styleUrl: './app.component.css'
 })
 export class AppComponent {
+  
   title = 'geneva';
+
+  handleSidebar(): void {
+    let check = document.getElementById('app-sidebar')
+
+    if (check) {
+      check.click()
+    }
+  }
+
 }
