@@ -2,6 +2,6 @@
   "name": "geneva-app",
   "compatibility_date": "2025-06-28",
   "assets": {
-    "directory": "./dist"
+    "directory": "./geneva/dist/geneva/browser"
   }
 }
