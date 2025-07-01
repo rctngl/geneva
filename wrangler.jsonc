@@ -1,0 +1,8 @@
+{
+  "name": "geneva-app",
+  "compatibility_date": "2025-06-28",
+  "assets": {
+    "directory": "./geneva/dist/geneva/browser",
+    "not_found_handling": "single-page-application"
+  }
+}
