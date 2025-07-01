@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { MobileHeaderComponent } from './components/mobile-header/mobile-header.component';
+
+import { ToolDefinitionLoaderService } from './services/tool-definition-loader.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,8 @@ import { MobileHeaderComponent } from './components/mobile-header/mobile-header.
 })
 export class AppComponent {
   
-  title = 'geneva';
+  private loader = inject(ToolDefinitionLoaderService)
+  title = 'geneva'
 
   handleSidebar(): void {
     let check = document.getElementById('app-sidebar')
@@ -19,5 +22,10 @@ export class AppComponent {
       check.click()
     }
   }
+
+  ngOnInit() {
+    this.loader.loadToolDefinitions();
+  }
+  
 
 }
