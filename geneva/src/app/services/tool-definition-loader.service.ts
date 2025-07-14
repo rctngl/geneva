@@ -60,7 +60,6 @@ export class ToolDefinitionLoaderService {
                 console.log(`Unofficial Definitions: ${index.unofficial.length}`)
                 const definitions = await this.loadDefinitionsForHeaders('unofficial', index.unofficial)
                 this.unofficialSubject.next(definitions)
-                console.warn("Unofficial Loaded")
             }
 
             // Load Contributed Definitions
