@@ -34,34 +34,31 @@ export interface ToolBluetooth {
 export interface ToolService {
     uuid: string
     name: string
-    isPrimary?: boolean // Used for device searching
+    isPrimary?: boolean
     characteristics: ToolCharacteristic[]
 }
 
 export interface ToolCharacteristic {
     uuid: string
     name: string
-    properties: {
-        read?: boolean;
-        write?: boolean;
-        notify?: boolean;
-    }
     packet_format: {
-        fields: ToolCharacteristicField[]
+        fields: ToolField[]
     }
 }
 
-export interface ToolCharacteristicField {
+export interface ToolField {
     
-    name: string
+    id: string
 
     offset: number
     length: number
     type: FieldType
 
-    // scale?: number
+    scale?: number
     // map?: Record<number | string, any>
-    // display?: {}
+    display?: {
+        label?: string
+    }
 
 }
 
